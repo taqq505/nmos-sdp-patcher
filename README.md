@@ -32,24 +32,13 @@ No dependencies required — works with standard Python 3.
 
 ### ▶️ SenderからSDPを取得して送信（自動）
 
-```bash
 python3 nmos-sdp-get-load.py <receiver_ip[:port]> <sender_ip[:port]>
 例 / Example:
 
-bash
-コピーする
-編集する
 python3 nmos-sdp-get-load.py 10.1.2.20 10.1.2.10
-🗂 ローカルSDPファイルを送信する場合
-bash
-コピーする
-編集する
-python3 nmos-sdp-get-load.py <receiver_ip[:port]> -s <sdp_file>
-または / Or:
 
-bash
-コピーする
-編集する
+python3 nmos-sdp-get-load.py <receiver_ip[:port]> -s <sdp_file>
+
 python3 nmos-sdp-get-load.py <receiver_ip[:port]> --sdp <sdp_file>
 
 📄 ライセンス / License

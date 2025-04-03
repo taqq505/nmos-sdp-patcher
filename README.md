@@ -6,23 +6,32 @@
 ![License: MIT](https://img.shields.io/badge/license-MIT-green)
 
 NMOS IS-05 機器に対して SDP ファイルを送信（PATCH）するためのユーティリティです。
+
 This is a utility to push SDP files to NMOS IS-05 compatible receivers via PATCH.
 
 コンセプトは軽量・簡易・ノーセットアップです。RDSを構築する必要はありません。
+
 The concept is lightweight, simple, and zero-setup.
+
 There is no need to build or deploy an RDS.
 
 このアプリ自体がsenderにアクセスし、SDPを選択取得できます。
+
 ラボ用途など、システムに組み込まれていないデバイスの簡易操作でご活用ください。
+
 This application directly accesses the sender and allows you to select and retrieve SDP files.
+
 It is intended for easy operation of devices that are not part of a larger system, such as for use in lab environments.
 
 ポート番号の調査方法はNMAP等を使用して空いているポート調査、webアクセスして以下のエンドポイントにアクセスできるか確認してください。
+
 To find an available port, use tools like NMAP, and confirm web access by checking the following endpoints:
 
 
 Sender: http://xx.xx.xx.xx:8090/x-nmos/node
+
 Receiver: http://xx.xx.xx.xx:8090/x-nmos/connection
+
 ---
 
 ## ✨ 特長 / Features

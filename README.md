@@ -40,11 +40,11 @@ python3 nmos-sdp-get-load.py <receiver_ip[:port]> <sender_ip[:port]>
 
 例 / Example:
 
-python3 nmos-sdp-get-load.py 10.1.2.20 10.1.2.10
+python3 nmos-sdp-patcher.py 10.1.2.20 10.1.2.10
 
-python3 nmos-sdp-get-load.py <receiver_ip[:port]> -s <sdp_file>
+python3 nmos-sdp-patcher.py <receiver_ip[:port]> -s <sdp_file>
 
-python3 nmos-sdp-get-load.py <receiver_ip[:port]> --sdp <sdp_file>
+python3 nmos-sdp-patcher.py <receiver_ip[:port]> --sdp <sdp_file>
 
 📄 ライセンス / License
 MIT License

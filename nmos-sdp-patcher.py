@@ -129,8 +129,8 @@ def select_from_list(items, prompt="選択肢:"):
 
 def main():
     parser = argparse.ArgumentParser(description="NMOS SDP Sender")
-    parser.add_argument("receiver", help="Receiver IP[:port]")
     parser.add_argument("sender", nargs="?", help="Sender IP[:port]（-sdpなしの場合に使用）")
+    parser.add_argument("receiver", help="Receiver IP[:port]")
     parser.add_argument("-s", "--sdp", help="ローカルSDPファイルを送信に使用する")
     args = parser.parse_args()
 

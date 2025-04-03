@@ -28,9 +28,9 @@ It is intended for easy operation of devices that are not part of a larger syste
 To find an available port, use tools like NMAP, and confirm web access by checking the following endpoints:
 
 
-Sender: http://xx.xx.xx.xx:<port>/x-nmos/node
+Sender: http://xx.xx.xx.xx:[port]/x-nmos/node
 
-Receiver: http://xx.xx.xx.xx:<port>/x-nmos/connection
+Receiver: http://xx.xx.xx.xx:[port]/x-nmos/connection
 
 ---
 

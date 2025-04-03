@@ -57,18 +57,15 @@ In response to the virtual environment requirement, all modules are used only as
 
 ### ▶️ SenderからSDPを取得して送信（自動）
 
-python3 nmos-sdp-get-load.py <receiver_ip[:port]> <sender_ip[:port]>
-
-<receiver_ip[:port]>　IS-04　
-<sender_ip[:port]>    IS-05
+python3 nmos-sdp-patcher.py <sender_ip[:port]> <receiver_ip[:port]>
 
 例 / Example:
 
 python3 nmos-sdp-patcher.py 10.1.2.20 10.1.2.10
 
-python3 nmos-sdp-patcher.py <receiver_ip[:port]> -s <sdp_file>
+python3 nmos-sdp-patcher.py -s <sdp_file> <receiver_ip[:port]> 
 
-python3 nmos-sdp-patcher.py <receiver_ip[:port]> --sdp <sdp_file>
+python3 nmos-sdp-patcher.py --sdp <sdp_file> <receiver_ip[:port]> 
 
 📄 ライセンス / License
 MIT License

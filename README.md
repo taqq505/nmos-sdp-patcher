@@ -16,7 +16,6 @@ This is a utility to push SDP files to NMOS IS-05 compatible receivers via PATCH
 - ✅ ST2022-7 非対応機器にも自動対応
 - ✅ `"sender_id"` 省略可能、指定可能
 - ✅ `activation.mode = "activate_immediate"` 固定
-- ✅ JSONキー順も仕様通り（`sender_id` の順番固定）
 
 ---
 

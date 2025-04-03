@@ -1,6 +1,7 @@
 # 🛰️ NMOS SDP Get & Load Utility
 
 ![Python](https://img.shields.io/badge/python-3.6%2B-blue.svg)
+![NMOS](https://img.shields.io/badge/NMOS-IS--04-informational)
 ![NMOS](https://img.shields.io/badge/NMOS-IS--05-informational)
 ![License: MIT](https://img.shields.io/badge/license-MIT-green)
 
@@ -33,6 +34,10 @@ In response to the virtual environment requirement, all modules are used only as
 ### ▶️ SenderからSDPを取得して送信（自動）
 
 python3 nmos-sdp-get-load.py <receiver_ip[:port]> <sender_ip[:port]>
+
+<receiver_ip[:port]>　IS-04　
+<sender_ip[:port]>    IS-05
+
 例 / Example:
 
 python3 nmos-sdp-get-load.py 10.1.2.20 10.1.2.10

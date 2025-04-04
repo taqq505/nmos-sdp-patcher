@@ -23,9 +23,9 @@ This application directly accesses the sender and allows you to select and retri
 
 It is intended for easy operation of devices that are not part of a larger system, such as for use in lab environments.
 
-ポート番号の調査方法はNMAP等を使用して空いているポート調査、webアクセスして以下のエンドポイントにアクセスできるか確認してください。
+Nmapなどのツールを使用して空いているポートを調査し、確認できたポートにWebアクセスして、以下のエンドポイントに接続できるかどうかを確認してください。
 
-To find an available port, use tools like NMAP, and confirm web access by checking the following endpoints:
+Please use tools like Nmap to scan for open ports, and then access those ports via a web browser to verify whether the following endpoints are accessible.
 
 
 Sender: http://xx.xx.xx.xx:[port]/x-nmos/node

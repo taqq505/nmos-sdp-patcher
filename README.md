@@ -41,7 +41,7 @@ Receiver: http://xx.xx.xx.xx:[port]/x-nmos/connection
 - ✅ ST2022-7 非対応機器にも自動対応
 - ✅ `"sender_id"` 省略可能、指定可能
 - ✅ `activation.mode = "activate_immediate"` 固定
-
+- ✅ 
 ---
 
 ## 📦 インストール不要 / No Installation Needed

@@ -69,7 +69,7 @@ python3 nmos-sdp-patcher.py -s <sdp_file> <receiver_ip[:port]>
 
 python3 nmos-sdp-patcher.py --sdp <sdp_file> <receiver_ip[:port]> 
 
-python3 nmos-sdp-patcher.py ./SDP.sdp 10.1.2.20:8080 
+python3 nmos-sdp-patcher.py -s ./SDP.sdp 10.1.2.20:8080 
 
 
 📄 ライセンス / License

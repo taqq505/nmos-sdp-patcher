@@ -6,23 +6,16 @@
 ![License: MIT](https://img.shields.io/badge/license-MIT-green)
 
 NMOS IS-05 機器に対して SDP ファイルを送信（PATCH）するためのユーティリティです。
-
 This is a utility to push SDP files to NMOS IS-05 compatible receivers via PATCH.
 
 コンセプトは軽量・簡易・ノーセットアップです。RDSを構築する必要はありません。
-
 The concept is lightweight, simple, and zero-setup.
-
 There is no need to build or deploy an RDS.
 
 このアプリ自体がsenderにアクセスし、SDPを選択取得できます。
-
 ラボ用途など、システムに組み込まれていないデバイスの簡易操作でご活用ください。
-
 This application directly accesses the sender and allows you to select and retrieve SDP files.
-
 It is intended for easy operation of devices that are not part of a larger system, such as for use in lab environments.
-
 
 機器に使用するアドレス、ポートが分からない場合は、
 Nmapなどのツールを使用して空いているポートを調査し、確認できたポートにWebアクセスして、以下のエンドポイントに接続できるかどうかを確認してください。
@@ -30,13 +23,15 @@ Nmapなどのツールを使用して空いているポートを調査し、確�
 If you do not know the address or port used for the device,
 Use a tool such as Nmap to investigate available ports, and then use web access to the confirmed ports to see if you can connect to the following endpoints
 
-
 Sender: http://xx.xx.xx.xx:[port]/x-nmos/node
-
 Receiver: http://xx.xx.xx.xx:[port]/x-nmos/connection
-
 ---
-
+## 🚀 リリースファイル（v1.0.0）
+🗂️ Assets:
+- [📦 nmos-sdp-patcher_x64.exe](https://github.com/taqq505/nmos-sdp-patcher/releases/download/v1.0/nmos-sdp-patcher_x64.exe)
+- [📁 Source code (zip)](https://github.com/taqq505/nmos-sdp-patcher/archive/refs/tags/v1.0.zip)
+- [📁 Source code (tar.gz)](https://github.com/taqq505/nmos-sdp-patcher/archive/refs/tags/v1.0.tar.gz)
+---
 ## ✨ 特長 / Features
 
 - ✅ NMOS Sender から SDP を自動取得
@@ -51,7 +46,6 @@ Receiver: http://xx.xx.xx.xx:[port]/x-nmos/connection
 
 Python 3.x 環境でそのまま実行可能です（追加ライブラリ不要）。
 Ubuntu24.04のPython環境の仮想必須化に対応し、モジュールはすべて標準搭載のものだけを使用しています。
-
 No dependencies required — works with standard Python 3.
 In response to the virtual environment requirement, all modules are used only as standard equipment.
 ---

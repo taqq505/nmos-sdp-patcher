@@ -25,6 +25,7 @@ Use a tool such as Nmap to investigate available ports, and then use web access 
 
 Sender: http://xx.xx.xx.xx:[port]/x-nmos/node
 Receiver: http://xx.xx.xx.xx:[port]/x-nmos/connection
+
 ---
 ## 🚀 リリースファイル（v1.0.0）
 🗂️ Assets:

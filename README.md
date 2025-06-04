@@ -49,6 +49,7 @@ Python 3.x 環境でそのまま実行可能です（追加ライブラリ不要
 Ubuntu24.04のPython環境の仮想必須化に対応し、モジュールはすべて標準搭載のものだけを使用しています。
 No dependencies required — works with standard Python 3.
 In response to the virtual environment requirement, all modules are used only as standard equipment.
+
 ---
 
 ## 🚀 使い方 / Usage

@@ -72,8 +72,7 @@ python3 nmos-sdp-patcher.py -s ./SDP.sdp 10.1.2.20:8080
 
 ---
 
-## 🚀 既知のエラー / known errors
-・panasonic KAIROSが操作できない　Panasonic KAIROS cannot be operated
+
 
 
 

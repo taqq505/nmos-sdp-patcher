@@ -27,6 +27,14 @@ Sender: http://xx.xx.xx.xx:[port]/x-nmos/node
 Receiver: http://xx.xx.xx.xx:[port]/x-nmos/connection
 
 ---
+##  リリースノート（v1.1）
+"Support devices where the port numbers of IS-04 and IS-05 are different."
+IS-04とIS-05のポートナンバーの違うデバイスに対応しました。
+
+python3 nmos-sdp-patcher.py <sender_ip[:port]> -rp04<node_port[:port]> -rp05<connection_port[:port]> <receiver_ip[:port]>
+
+
+---
 ## 🚀 リリースファイル（v1.0.0）
 🗂️ Assets:
 - [📦 nmos-sdp-patcher_x64.exe](https://github.com/taqq505/nmos-sdp-patcher/releases/download/v1.0/nmos-sdp-patcher_x64.exe)

@@ -35,11 +35,11 @@ python3 nmos-sdp-patcher.py <sender_ip[:port]> -rp04<node_port[:port]> -rp05<con
 
 
 ---
-## 🚀 リリースファイル（v1.0.0）
+## 🚀 リリースファイル（v1.1.0）
 🗂️ Assets:
-- [📦 nmos-sdp-patcher_x64.exe](https://github.com/taqq505/nmos-sdp-patcher/releases/download/v1.0/nmos-sdp-patcher_x64.exe)
-- [📁 Source code (zip)](https://github.com/taqq505/nmos-sdp-patcher/archive/refs/tags/v1.0.zip)
-- [📁 Source code (tar.gz)](https://github.com/taqq505/nmos-sdp-patcher/archive/refs/tags/v1.0.tar.gz)
+- [📦 nmos-sdp-patcher_x64.exe](https://github.com/taqq505/nmos-sdp-patcher/releases/download/v1.1/nmos-sdp-patcher_x64_v1.1.exe)
+- [📁 Source code (zip)](https://github.com/taqq505/nmos-sdp-patcher/archive/refs/tags/v1.1.zip)
+- [📁 Source code (tar.gz)](https://github.com/taqq505/nmos-sdp-patcher/archive/refs/tags/v1.1.tar.gz)
 ---
 ## ✨ 特長 / Features
 

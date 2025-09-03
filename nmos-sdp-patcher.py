@@ -19,6 +19,7 @@ def http_get(host, port, path):
     return res.read().decode()
 
 def http_get_url(full_url):
+    print(f"[DEBUG] manifest_href: {full_url}")
     parsed = urllib.parse.urlparse(full_url)
     host = parsed.hostname
     port = parsed.port or 80
@@ -51,8 +52,12 @@ def http_patch(host, port, path, body):
         sys.exit(1)
 
 def parse_sdp_to_json(sdp_text, sender_id=None, receiver_port_count=2):
+    # 改行を正規化してから、CRLFを統一的に処理
     normalized_sdp = sdp_text.replace("\r\n", "\n").replace("\r", "\n")
     normalized_sdp_crlf = normalized_sdp.replace("\n", "\r\n")
+    # 連続した空行（\r\n\r\n）を1つにまとめる
+    normalized_sdp_crlf = normalized_sdp_crlf.replace("\r\n\r\n", "\r\n")
+
     lines = normalized_sdp.splitlines()
 
     result = OrderedDict()
@@ -116,6 +121,7 @@ def parse_sdp_to_json(sdp_text, sender_id=None, receiver_port_count=2):
 
     return result
 
+
 def select_from_list(items, prompt="選択肢:"):
     print(f"\n{prompt}")
     for idx, item in enumerate(items):
@@ -140,11 +146,8 @@ def test_patch_path(host, port, conn_ver, receiver_id):
                 "master_enable": False
             }))
             print(f"[INFO] PATCH accepted at: {path}")
-            # active パスはスラッシュ付きに固定
             active_path = f"/x-nmos/connection/{conn_ver}/single/receivers/{receiver_id}/active/"
             return path, active_path
-        except SystemExit:
-            print(f"[INFO] PATCH to {path} failed.")
         except SystemExit:
             print(f"[INFO] PATCH to {path} failed.")
     print("[ERROR] PATCH failed at both paths.")
@@ -157,14 +160,24 @@ def send_main_patch(host, port, path, json_body):
 
 def main():
     parser = argparse.ArgumentParser(description="NMOS SDP Sender")
+
     parser.add_argument("sender", nargs="?", help="Sender IP[:port]（-sdpなしの場合に使用）")
     parser.add_argument("receiver", help="Receiver IP[:port]")
     parser.add_argument("-s", "--sdp", help="ローカルSDPファイルを送信に使用する")
+
+    parser.add_argument("-rp04", "--receiver-port-04", type=int, help="IS-04用のReceiverポート番号")
+    parser.add_argument("-rp05", "--receiver-port-05", type=int, help="IS-05用のReceiverポート番号")
+
     args = parser.parse_args()
 
+    # 位置引数から receiver_host, receiver_port を抽出
     receiver_host, receiver_port = (args.receiver.split(":") + ["80"])[:2]
     receiver_port = int(receiver_port)
 
+    receiver_port_04 = args.receiver_port_04 if args.receiver_port_04 else receiver_port
+    receiver_port_05 = args.receiver_port_05 if args.receiver_port_05 else receiver_port
+
+    # SDP読み込み or Senderから取得
     if args.sdp:
         if not os.path.exists(args.sdp):
             print(f"SDPファイルが見つかりません: {args.sdp}")
@@ -174,7 +187,7 @@ def main():
         sender_id = None
     else:
         if not args.sender:
-            print("Sender IP[:port] または -sdp オプションを指定してください。")
+            print("Sender IP[:port] または -s オプションを指定してください。")
             sys.exit(1)
 
         sender_host, sender_port = (args.sender.split(":") + ["80"])[:2]
@@ -196,30 +209,33 @@ def main():
 
         sdp_text = http_get_url(manifest_href)
 
-    receiver_versions = json.loads(http_get(receiver_host, receiver_port, "/x-nmos/node/"))
+    # IS-04（node API）でreceiver取得
+    receiver_versions = json.loads(http_get(receiver_host, receiver_port_04, "/x-nmos/node/"))
     receiver_ver = sorted(receiver_versions)[-1].strip("/")
-    receivers = json.loads(http_get(receiver_host, receiver_port, f"/x-nmos/node/{receiver_ver}/receivers/"))
+    receivers = json.loads(http_get(receiver_host, receiver_port_04, f"/x-nmos/node/{receiver_ver}/receivers/"))
 
     r_choices = [f'{r["label"]} ({r["id"]}) - {r["format"]}' for r in receivers]
     r_idx = select_from_list(r_choices, "SDPを送信するReceiverを選んでください:")
     receiver_id = receivers[r_idx]["id"]
 
-    conn_versions = json.loads(http_get(receiver_host, receiver_port, "/x-nmos/connection/"))
+    # IS-05（connection API）へ接続
+    conn_versions = json.loads(http_get(receiver_host, receiver_port_05, "/x-nmos/connection/"))
     conn_ver = sorted(conn_versions)[-1].strip("/")
 
-    patch_path, active_path = test_patch_path(receiver_host, receiver_port, conn_ver, receiver_id)
+    patch_path, active_path = test_patch_path(receiver_host, receiver_port_05, conn_ver, receiver_id)
 
-    active_json = json.loads(http_get(receiver_host, receiver_port, active_path))
+    active_json = json.loads(http_get(receiver_host, receiver_port_05, active_path))
     receiver_port_count = len(active_json.get("transport_params", []))
 
     json_body = parse_sdp_to_json(sdp_text, sender_id=sender_id, receiver_port_count=receiver_port_count)
 
-    send_main_patch(receiver_host, receiver_port, patch_path, json_body)
+    send_main_patch(receiver_host, receiver_port_05, patch_path, json_body)
 
     time.sleep(1)
-    active_json = json.loads(http_get(receiver_host, receiver_port, active_path))
+    active_json = json.loads(http_get(receiver_host, receiver_port_05, active_path))
     print("\n[ReceiverのActive状態]")
     print(json.dumps(active_json, indent=2))
+
 
 if __name__ == "__main__":
     main()
